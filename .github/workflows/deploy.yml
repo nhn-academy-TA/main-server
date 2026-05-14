@@ -25,8 +25,5 @@ jobs:
             # 3. 환경 변수 파일 확인 (서버에 미리 있어야 함)
             # 만약 .env도 자동 갱신하고 싶다면 여기에 echo 설정을 추가할 수 있어.
             
-            # 4. 도커 빌드 및 컨테이너 재실행
-            docker compose up --build -d
-            
-            # 5. 안 쓰는 이미지 정리 (서버 용량 관리)
-            docker image prune -f
+            /usr/local/bin/docker compose down
+            /usr/local/bin/docker compose up -d --build
