@@ -10,11 +10,25 @@ services:
     container_name: babchu-nginx
     ports:
       - "80:80"
-
+    environment:
+      DB_URL: jdbc:mysql://db:3306/${DB_NAME}
+      DB_USERNAME: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - babchu-service
 
+  db:
+    image: mysql:8.0
+    container_name: prod_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    expose:
+      - "3306"
+    volumes:
+      - ~/babchu_mysql_data:/var/lib/mysql
 
 
