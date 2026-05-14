@@ -14,6 +14,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
+          port: 19190
           script: |
             # 1. 프로젝트 폴더로 이동 (폴더명 확인 필수!)
             cd /Users/server-admin/server/main-server
